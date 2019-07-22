@@ -1,0 +1,42 @@
+﻿body {
+    background-image:url(../Images/19.jpg);
+}
+body > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form {
+    margin-top:280px; 
+    margin-right:60px;
+}
+h1 {
+    text-shadow: 2px 2px 2px #1a1818;
+    color: #c74545
+}
+span {
+    font-weight: 900;
+    font-size: xx-large;
+    text-shadow: 2px 2px 2px #1a1818;
+    color: #c74545;
+}
+input, button {
+    box-shadow:0 0 10px #1e0707;
+    color:#6f2727;
+    font-size:large;
+    text-shadow:1px 1px 2px #220a0a;
+    text-align:center;
+    padding:6px 0 4px 10px;
+    border:none; 
+    background:#aa8484;
+}
+span#ErrorLabel {
+    font-weight: 900;
+    font-size: large;
+    text-shadow: 2px 2px 2px #1a1818;
+    color: #c74545;
+}
+input#SignUpButton, input#LogInButton {
+    Width: 150px;
+    Height: 45px
+}

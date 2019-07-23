@@ -30,7 +30,7 @@ namespace AccountLogInApplication
                 HttpCookie sign = new HttpCookie("sign", GetterSign.GetSign(LoginBox.Text));
                 Response.Cookies.Add(log);
                 Response.Cookies.Add(sign);
-                Response.Redirect($"AccountPage.aspx?");
+                Response.Redirect($"AccountPage.aspx?id={isData.Item2}");
             }
             Response.Redirect("StartPage.aspx?error=1");
 

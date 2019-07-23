@@ -75,6 +75,9 @@
   <ItemGroup>
     <Content Include="AccountInformation.aspx" />
     <Content Include="AccountPage.aspx" />
+    <Content Include="HandlerDB.aspx" />
+    <Content Include="MessagePage.aspx" />
+    <Content Include="Styles\MessageStyle.css" />
     <Content Include="Styles\AccountPages.css" />
     <Content Include="AccountsList.aspx" />
     <Content Include="RegistrationPage.aspx" />
@@ -108,6 +111,20 @@
     </Compile>
     <Compile Include="Classes\GetterSign.cs" />
     <Compile Include="Classes\HandlerSqlBD.cs" />
+    <Compile Include="HandlerDB.aspx.cs">
+      <DependentUpon>HandlerDB.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HandlerDB.aspx.designer.cs">
+      <DependentUpon>HandlerDB.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MessagePage.aspx.cs">
+      <DependentUpon>MessagePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MessagePage.aspx.designer.cs">
+      <DependentUpon>MessagePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationPage.aspx.cs">
       <DependentUpon>RegistrationPage.aspx</DependentUpon>
@@ -126,6 +143,7 @@
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\UserContext.cs" />
     <Compile Include="Classes\UserProfile.cs" />
+    <Compile Include="Classes\UserNotes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

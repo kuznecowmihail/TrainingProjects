@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace AccountLogInApplication
 {
@@ -19,7 +21,7 @@ namespace AccountLogInApplication
             return _handler;
         }
 
-        public void AddInformation(User user, UserProfile userProfile)
+        public void AddUser(User user, UserProfile userProfile)
         {
             using(UserContext db = new UserContext())
             {
@@ -59,7 +61,7 @@ namespace AccountLogInApplication
 
             using (UserContext db = new UserContext())
             {
-                foreach(var user in db.Users)
+                foreach(var user in db.Users.ToList())
                 {
                     if(user.Login == login && user.Password == password)
                     {
@@ -71,26 +73,76 @@ namespace AccountLogInApplication
             return (false, 0);
         }
 
-        public UserProfile GetInformation(int id)
+        public User GetInformationAboutUser(int id)
         {
             using (UserContext db = new UserContext())
             {
-                return db.UserProfiles.Where(t => t.ID == id).FirstOrDefault();
+                return db.Users.Include(t => t.UserProfile).Include(t => t.UserNotes).Where(t => t.ID == id).FirstOrDefault();
             }
         }
 
-        public List<(UserProfile, string)> GetAllusers()
+        public List<User> GetAllusers()
+        {
+            List<User> users = new List<User>();
+
+            using (UserContext db = new UserContext())
+            {
+                foreach(var i in db.Users.Include(t => t.UserProfile).Include(t => t.UserNotes).ToList())
+                {
+                    User once = i;
+                    users.Add(once);
+                }
+            }
+
+            return users;
+        }
+
+        public List<UserNotes> GetAllNotes()
+        {
+            List<UserNotes> usersNotes = new List<UserNotes>();
+
+            using (UserContext db = new UserContext())
+            {
+                foreach (var i in db.UserNotes.Include(t => t.User).Include(t => t.User.UserProfile).ToList())
+                {
+                    UserNotes once = i;
+                    usersNotes.Add(once);
+                }
+            }
+
+            return usersNotes;
+        }
+
+        public bool AddText(string text, string login)
+        {
+            if(text ==string.Empty)
+            {
+                return false;
+            }
+
+            using (UserContext db = new UserContext())
+            {
+                int id = db.Users.Where(t => t.Login == login).FirstOrDefault().ID;
+                UserNotes userNotes = new UserNotes()
+                {
+                    Text = text,
+                    DateTime = DateTime.Now,
+                    UserID = id
+                };
+                db.UserNotes.Add(userNotes);
+                db.SaveChanges();
+
+                return true;
+            }
+        }
+
+        public void DeleteText(int id)
         {
             using (UserContext db = new UserContext())
             {
-                List<(UserProfile, string)> users = new List<(UserProfile, string)>();
-                
-                foreach(var i in db.Users.ToList())
-                {
-                    (UserProfile, string) once = (i.UserProfile, i.Login);
-                    users.Add(once);
-                }
-                return users;
+                var text = db.UserNotes.Where(t => t.ID == id).FirstOrDefault();
+                db.UserNotes.Remove(text);
+                db.SaveChanges();
             }
         }
     }

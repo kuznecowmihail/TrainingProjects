@@ -8,5 +8,6 @@ namespace AccountLogInApplication
 
         public DbSet<User> Users { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<UserNotes> UserNotes { get; set; }
     }
 }

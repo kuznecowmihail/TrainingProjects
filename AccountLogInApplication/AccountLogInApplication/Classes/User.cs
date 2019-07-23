@@ -1,4 +1,6 @@
-﻿namespace AccountLogInApplication
+﻿using System.Collections.Generic;
+
+namespace AccountLogInApplication
 {
     public class User
     {
@@ -7,5 +9,6 @@
         public string Password { get; set; }
 
         public virtual UserProfile UserProfile { get; set; }
+        public virtual ICollection<UserNotes> UserNotes { get; set; }
     }
 }

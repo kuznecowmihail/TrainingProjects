@@ -24,11 +24,11 @@ namespace AccountLogInApplication
 
                 int countLink = 0;
 
-                List<(UserProfile, string)> users = HandlerSqlBD.GetHandler().GetAllusers();
+                List<User> users = HandlerSqlBD.GetHandler().GetAllusers();
 
-                foreach (var i in users.Where(t => t.Item2 != login.Value).Skip(numberPage*rangeOfPage).Take(rangeOfPage))
+                foreach (var i in users.Where(t => t.Login != login.Value).Skip(numberPage*rangeOfPage).Take(rangeOfPage))
                 {
-                    links[countLink].Text = $"{i.Item1.FirstName} {i.Item1.LastName}";
+                    links[countLink].Text = $"{i.UserProfile.FirstName} {i.UserProfile.LastName}";
                     countLink++;
                 }
 

@@ -25,7 +25,7 @@ namespace AccountLogInApplication
 
             if(HandlerSqlBD.GetHandler().IsNotExist(Login.Text) && Int32.TryParse(Age.Text, out int age))
             {
-                HandlerSqlBD.GetHandler().AddInformation(new User{
+                HandlerSqlBD.GetHandler().AddUser(new User{
                     Login = Login.Text,
                     Password = Password.Text
                 }, new UserProfile{

@@ -2,10 +2,10 @@
     background-image: url(../Images/19.jpg);
 }
 table {
-    margin-top:280px;
+    margin-top:100px;
     margin-left:750px;
 }
-input {
+input, textarea {
     Width:150px;
     Height:45px;
     box-shadow:0 0 10px #1e0707;
@@ -16,6 +16,11 @@ input {
     padding:6px 0 4px 10px;
     border:none; 
     background:#aa8484
+}
+textarea {
+    text-align: left;
+    Width:700px;
+    Height:230px;
 }
 span {
     font-weight: 900;

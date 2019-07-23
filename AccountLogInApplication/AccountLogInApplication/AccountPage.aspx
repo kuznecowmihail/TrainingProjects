@@ -58,11 +58,29 @@
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
-                    <asp:TableCell ColumnSpan="2" HorizontalAlign="Right">
+                    <asp:TableCell>
+                        <asp:Button ID="WriteMessage" runat="server" Text="Write Message" OnClick="WriteMessage_Click" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:Button ID="ShowMessage" runat="server" Text="Show my message" OnClick="ShowMessage_Click" />
+                    </asp:TableCell>
+                    <asp:TableCell>
                         <asp:Button ID="AllUsers" runat="server" Text="All Users" OnClick="AllUsers_Click"/>
+                    </asp:TableCell>
+                    <asp:TableCell></asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell ColumnSpan="3" HorizontalAlign="Center">
+                        <asp:Label ID="LabelInformation" runat="server"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
+            <div style="margin-left:650px; margin-top:50px;">
+                <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Visible="false"></asp:TextBox>
+            </div>
+            <div style="margin-left:1300px; margin-top:50px;">
+                <asp:Button ID="SaveMessage" runat="server" Visible="false" Text="Save" OnClick="SaveMessage_Click" />
+            </div>
         </div>
     </form>
 </body>

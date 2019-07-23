@@ -18,16 +18,16 @@ namespace AccountLogInApplication
             {
                 int numberInPage = Convert.ToInt32(Request.QueryString["id"]);
                 int numberPage = Convert.ToInt32(Request.Cookies["numberPage"].Value);
-                List<(UserProfile, string)> otherPeople = HandlerSqlBD.GetHandler().GetAllusers().Where(t => t.Item2 != login.Value).ToList();
+                List<User> otherPeople = HandlerSqlBD.GetHandler().GetAllusers().Where(t => t.Login != login.Value).ToList();
 
                 int count = rangeOfPage * numberPage + (numberInPage == 0 ? 0 : numberInPage - 1);
                 
 
-                FistName.Text = otherPeople[count].Item1.FirstName;
-                LastName.Text = otherPeople[count].Item1.LastName;
-                Age.Text = otherPeople[count].Item1.Age.ToString();
-                LeavingPlace.Text = otherPeople[count].Item1.LeavingPlace;
-                Career.Text = otherPeople[count].Item1.Career;
+                FistName.Text = otherPeople[count].UserProfile.FirstName;
+                LastName.Text = otherPeople[count].UserProfile.LastName;
+                Age.Text = otherPeople[count].UserProfile.Age.ToString();
+                LeavingPlace.Text = otherPeople[count].UserProfile.LeavingPlace;
+                Career.Text = otherPeople[count].UserProfile.Career;
             }
             else
             {

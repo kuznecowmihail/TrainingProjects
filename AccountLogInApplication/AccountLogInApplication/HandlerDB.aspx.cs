@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace AccountLogInApplication
 {
     public partial class HandlerDB : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected async void Page_Load(object sender, EventArgs e)
         {
             HttpCookie login = Request.Cookies["login"];
             HttpCookie sign = Request.Cookies["sign"];
@@ -14,13 +15,13 @@ namespace AccountLogInApplication
             {
                 int id = Convert.ToInt32(Request.QueryString["id"]);
 
-                HandlerSqlBD.GetHandler().DeleteText(id);
+                await Task.Run(() => HandlerSqlBD.GetHandler().DeleteText(id));
 
-                Response.Redirect("MessagePage.aspx");
+                Response.Redirect("MessagePage.aspx", false);
             }
             else
             {
-                Response.Redirect("StartPage.aspx");
+                Response.Redirect("StartPage.aspx", false);
             }
         }
     }

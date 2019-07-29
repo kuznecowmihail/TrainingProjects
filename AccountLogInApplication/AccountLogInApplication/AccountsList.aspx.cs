@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI.WebControls;
 
@@ -10,7 +11,7 @@ namespace AccountLogInApplication
     {
         const int rangeOfPage = 7;
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected async void Page_Load(object sender, EventArgs e)
         {
             HttpCookie login = Request.Cookies["login"];
             HttpCookie sign = Request.Cookies["sign"];
@@ -24,7 +25,7 @@ namespace AccountLogInApplication
 
                 int countLink = 0;
 
-                List<User> users = HandlerSqlBD.GetHandler().GetAllusers();
+                List<User> users = await Task.Run(() => HandlerSqlBD.GetHandler().GetAllusers());
 
                 foreach (var i in users.Where(t => t.Login != login.Value).Skip(numberPage*rangeOfPage).Take(rangeOfPage))
                 {
@@ -37,7 +38,7 @@ namespace AccountLogInApplication
                     i.Visible = false;
                 }
 
-                int count = HandlerSqlBD.GetHandler().GetAllusers().Count() - 1;
+                int count = await Task.Run(() => HandlerSqlBD.GetHandler().GetAllusers().Count() - 1);
 
                 if (numberPage == 0)
                 {
@@ -53,25 +54,25 @@ namespace AccountLogInApplication
             }
             else
             {
-                Response.Redirect("StartPage.aspx");
+                Response.Redirect("StartPage.aspx", false);
             }
         }
 
         protected void LeftButton_Click(object sender, EventArgs e)
         {
             int numberPage = Convert.ToInt32(Request.QueryString["page"]);
-            Response.Redirect($"AccountsList.aspx?id={numberPage - 1}");
+            Response.Redirect($"AccountsList.aspx?id={numberPage - 1}", false);
         }
 
         protected void RightButton_Click(object sender, EventArgs e)
         {
             int numberPage = Convert.ToInt32(Request.QueryString["page"]);
-            Response.Redirect($"AccountsList.aspx?page={numberPage + 1}");
+            Response.Redirect($"AccountsList.aspx?page={numberPage + 1}", false);
         }
 
         protected void Back_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AccountPage.aspx");
+            Response.Redirect("AccountPage.aspx", false);
         }
     }
 }

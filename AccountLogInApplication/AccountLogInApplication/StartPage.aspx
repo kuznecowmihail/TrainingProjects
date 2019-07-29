@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StartPage.aspx.cs" Inherits="AccountLogInApplication.StartPage" %>
+﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="StartPage.aspx.cs" Inherits="AccountLogInApplication.StartPage" %>
 
 <!DOCTYPE html>
 
@@ -19,7 +19,7 @@
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            <asp:Label ID="LoginLabel" runat="server" Text="Login:"></asp:Label>    
+                            <span>Login:</span>    
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:TextBox ID="LoginBox" runat="server" placeholder="Enter login"></asp:TextBox>
@@ -27,7 +27,7 @@
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            <asp:Label ID="PasswordLabel" runat="server" Text="Password:"></asp:Label>    
+                            <span>Password:</span>    
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:TextBox ID="PasswordBox" runat="server" placeholder="Enter password" TextMode="Password" ></asp:TextBox>

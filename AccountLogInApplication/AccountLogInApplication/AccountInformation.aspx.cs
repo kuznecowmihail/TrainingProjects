@@ -2,6 +2,7 @@
 using System.Web;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AccountLogInApplication
 {
@@ -9,7 +10,7 @@ namespace AccountLogInApplication
     {
         const int rangeOfPage = 7;
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected async void Page_Load(object sender, EventArgs e)
         {
             HttpCookie login = Request.Cookies["login"];
             HttpCookie sign = Request.Cookies["sign"];
@@ -18,7 +19,7 @@ namespace AccountLogInApplication
             {
                 int numberInPage = Convert.ToInt32(Request.QueryString["id"]);
                 int numberPage = Convert.ToInt32(Request.Cookies["numberPage"].Value);
-                List<User> otherPeople = HandlerSqlBD.GetHandler().GetAllusers().Where(t => t.Login != login.Value).ToList();
+                List<User> otherPeople = await Task.Run(() => HandlerSqlBD.GetHandler().GetAllusers().Where(t => t.Login != login.Value).ToList());
 
                 int count = rangeOfPage * numberPage + (numberInPage == 0 ? 0 : numberInPage - 1);
                 
@@ -31,14 +32,14 @@ namespace AccountLogInApplication
             }
             else
             {
-                Response.Redirect("StartPage.aspx");
+                Response.Redirect("StartPage.aspx", false);
             }
         }
 
         protected void Back_Click(object sender, EventArgs e)
         {
             int numberPage = Convert.ToInt32(Request.Cookies["numberPage"].Value);
-            Response.Redirect($"AccountsList.aspx?id={numberPage}");
+            Response.Redirect($"AccountsList.aspx?id={numberPage}", false);
         }
     }
 }

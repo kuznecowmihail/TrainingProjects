@@ -31,15 +31,6 @@ namespace AccountLogInApplication {
         protected global::System.Web.UI.WebControls.Table Table1;
         
         /// <summary>
-        /// LoginLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LoginLabel;
-        
-        /// <summary>
         /// LoginBox control.
         /// </summary>
         /// <remarks>
@@ -47,15 +38,6 @@ namespace AccountLogInApplication {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox LoginBox;
-        
-        /// <summary>
-        /// PasswordLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PasswordLabel;
         
         /// <summary>
         /// PasswordBox control.

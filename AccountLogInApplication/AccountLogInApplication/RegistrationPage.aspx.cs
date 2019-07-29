@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
 namespace AccountLogInApplication
@@ -10,7 +11,7 @@ namespace AccountLogInApplication
         {
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected async void Button1_Click(object sender, EventArgs e)
         {
             List<TextBox> information = new List<TextBox>() { Login, Password, FirstName, LastName, Age, LeavingPlace, Career };
             List<Label> informationError = new List<Label>() { InformationLabel1, InformationLabel2, InformationLabel3, InformationLabel4, InformationLabel5, InformationLabel6, InformationLabel7 };
@@ -23,7 +24,9 @@ namespace AccountLogInApplication
                 }
             }
 
-            if(HandlerSqlBD.GetHandler().IsNotExist(Login.Text) && Int32.TryParse(Age.Text, out int age))
+            var isNotExist = await Task.Run(() => HandlerSqlBD.GetHandler().IsNotExist(Login.Text) && Int32.TryParse(Age.Text, out int age));
+
+            if (isNotExist)
             {
                 HandlerSqlBD.GetHandler().AddUser(new User{
                     Login = Login.Text,
@@ -36,7 +39,7 @@ namespace AccountLogInApplication
                     Career = Career.Text
                 });
                 
-                Response.Redirect("StartPage.aspx?error=created");
+                Response.Redirect("StartPage.aspx?error=created", false);
             }
             else
             {
@@ -47,7 +50,7 @@ namespace AccountLogInApplication
 
         protected void Back_Click(object sender, EventArgs e)
         {
-            Response.Redirect("StartPage.aspx");
+            Response.Redirect("StartPage.aspx", false);
         }
     }
 }

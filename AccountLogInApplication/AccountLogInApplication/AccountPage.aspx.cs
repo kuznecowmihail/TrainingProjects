@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Web;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace AccountLogInApplication
 {
     public partial class Account : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected async void Page_Load(object sender, EventArgs e)
         {
             HttpCookie login = Request.Cookies["login"];
             HttpCookie sign = Request.Cookies["sign"];
 
             if (login != null && sign != null && sign.Value == GetterSign.GetSign(login.Value))
             {
-                User user = HandlerSqlBD.GetHandler().GetAllusers().Where(t => t.Login == login.Value).First();
+                User user = await Task.Run(() => HandlerSqlBD.GetHandler().GetAllusers().Where(t => t.Login == login.Value).FirstOrDefault());
 
                 FistName.Text = user.UserProfile.FirstName;
                 LastName.Text = user.UserProfile.LastName;
@@ -23,7 +24,7 @@ namespace AccountLogInApplication
             }
             else
             {
-                Response.Redirect("StartPage.aspx");
+                Response.Redirect("StartPage.aspx", false);
             }
         }
 
@@ -35,12 +36,12 @@ namespace AccountLogInApplication
             sign.Expires = DateTime.Now.AddDays(-1);
             Response.Cookies.Add(login);
             Response.Cookies.Add(sign);
-            Response.Redirect("StartPage.aspx");
+            Response.Redirect("StartPage.aspx", false);
         }
 
         protected void AllUsers_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AccountsList.aspx?page=0");
+            Response.Redirect("AccountsList.aspx?page=0", false);
         }
 
         protected void WriteMessage_Click(object sender, EventArgs e)
@@ -72,7 +73,7 @@ namespace AccountLogInApplication
 
         protected void ShowMessage_Click(object sender, EventArgs e)
         {
-            Response.Redirect("MessagePage.aspx");
+            Response.Redirect("MessagePage.aspx", false);
         }
     }
 }

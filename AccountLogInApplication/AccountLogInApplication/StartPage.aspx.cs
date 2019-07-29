@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace AccountLogInApplication
@@ -20,25 +21,25 @@ namespace AccountLogInApplication
             }
         }
 
-        protected void LogInButton_Click(object sender, EventArgs e)
+        protected async void LogInButton_Click(object sender, EventArgs e)
         {
-            var isData = HandlerSqlBD.GetHandler().IsTrueData(LoginBox.Text, PasswordBox.Text);
+            var isData = await Task.Run(() => HandlerSqlBD.GetHandler().IsTrueData(LoginBox.Text, PasswordBox.Text));
 
-            if (isData.Item1)
+            if (isData)
             {
-                HttpCookie log = new HttpCookie("login", LoginBox.Text);
+                HttpCookie login = new HttpCookie("login", LoginBox.Text);
                 HttpCookie sign = new HttpCookie("sign", GetterSign.GetSign(LoginBox.Text));
-                Response.Cookies.Add(log);
+                Response.Cookies.Add(login);
                 Response.Cookies.Add(sign);
-                Response.Redirect($"AccountPage.aspx?id={isData.Item2}");
+                Response.Redirect("AccountPage.aspx");
             }
-            Response.Redirect("StartPage.aspx?error=1");
+            Response.Redirect("StartPage.aspx?error=1", false);
 
         }
 
         protected void SignUpButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("RegistrationPage.aspx");
+            Response.Redirect("RegistrationPage.aspx", false);
         }
     }
 }

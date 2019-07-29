@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI.WebControls;
 
@@ -16,16 +17,16 @@ namespace AccountLogInApplication
             if (login != null && sign != null && sign.Value == GetterSign.GetSign(login.Value)) { }
             else
             {
-                Response.Redirect("StartPage.aspx");
+                Response.Redirect("StartPage.aspx", false);
             }
         }
 
-        protected void GetMessages_Click(object sender, EventArgs e)
+        protected async void GetMessages_Click(object sender, EventArgs e)
         {
             HttpCookie login = Request.Cookies["login"];
             if (RadioButtonList1.SelectedItem.Text == "My messages")
             {
-                var userNotes = HandlerSqlBD.GetHandler().GetAllNotes().Where(t => t.User.Login == login.Value);
+                var userNotes = await Task.Run(() => HandlerSqlBD.GetHandler().GetAllNotes().Where(t => t.User.Login == login.Value));
                 Table table = new Table()
                 {
                     ID = "Table"
@@ -70,7 +71,7 @@ namespace AccountLogInApplication
 
             if (RadioButtonList1.SelectedItem.Text == "All messages")
             {
-                var userNotes = HandlerSqlBD.GetHandler().GetAllNotes();
+                var userNotes = await Task.Run(() => HandlerSqlBD.GetHandler().GetAllNotes());
                 Table table = new Table()
                 {
                     ID = "Table"
@@ -109,7 +110,7 @@ namespace AccountLogInApplication
 
         protected void Back_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AccountPage.aspx");
+            Response.Redirect("AccountPage.aspx", false);
         }
     }
 }

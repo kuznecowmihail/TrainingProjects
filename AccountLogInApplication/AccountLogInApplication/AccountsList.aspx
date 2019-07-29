@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AccountsList.aspx.cs" Inherits="AccountLogInApplication.AccountsList" %>
+﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="AccountsList.aspx.cs" Inherits="AccountLogInApplication.AccountsList" %>
 
 <!DOCTYPE html>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegistrationPage.aspx.cs" Inherits="AccountLogInApplication.RegistrationPage" %>
+﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="RegistrationPage.aspx.cs" Inherits="AccountLogInApplication.RegistrationPage" %>
 
 <!DOCTYPE html>
 
@@ -19,24 +19,24 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:Label ID="Label0" CssClass="CommonLabel" runat="server" Text="Login:"></asp:Label>
+                        <span class="CommonLabel">Login:</span>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:TextBox ID="Login" runat="server"></asp:TextBox>
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:Label ID="InformationLabel1" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="InformationLabel1" runat="server"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:Label ID="Label1" CssClass="CommonLabel" runat="server" Text="Password:"></asp:Label>
+                        <span class="CommonLabel">Password:</span>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:Label ID="InformationLabel2" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="InformationLabel2" runat="server"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
@@ -46,57 +46,57 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell >
-                        <asp:Label ID="Label2" CssClass="CommonLabel" runat="server" Text="First name:"></asp:Label>
+                        <span class="CommonLabel">First Name:</span>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:TextBox ID="FirstName" runat="server"></asp:TextBox>
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:Label ID="InformationLabel3" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="InformationLabel3" runat="server"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:Label ID="Label3" CssClass="CommonLabel" runat="server" Text="Last name:"></asp:Label>
+                        <span class="CommonLabel">Last Name:</span>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:TextBox ID="LastName" runat="server"></asp:TextBox>
                     </asp:TableCell>
                      <asp:TableCell>
-                        <asp:Label ID="InformationLabel4" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="InformationLabel4" runat="server"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:Label ID="Label4" CssClass="CommonLabel" runat="server" Text="Years:"></asp:Label>
+                        <span class="CommonLabel">Years:</span>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:TextBox ID="Age" runat="server"></asp:TextBox>
                     </asp:TableCell>
                      <asp:TableCell>
-                        <asp:Label ID="InformationLabel5" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="InformationLabel5" runat="server"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:Label ID="Label5" CssClass="CommonLabel" runat="server" Text="Leaving place:"></asp:Label>
+                        <span class="CommonLabel">Leaving place:</span>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:TextBox ID="LeavingPlace" runat="server"></asp:TextBox>
                     </asp:TableCell>
                      <asp:TableCell>
-                        <asp:Label ID="InformationLabel6" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="InformationLabel6" runat="server"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:Label ID="Label6" CssClass="CommonLabel" runat="server" Text="Career"></asp:Label>
+                        <span class="CommonLabel">Career:</span>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:TextBox ID="Career" runat="server"></asp:TextBox>
                     </asp:TableCell>
                      <asp:TableCell>
-                        <asp:Label ID="InformationLabel7" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="InformationLabel7" runat="server"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>

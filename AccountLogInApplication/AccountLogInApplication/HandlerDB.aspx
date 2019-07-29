@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HandlerDB.aspx.cs" Inherits="AccountLogInApplication.HandlerDB" %>
+﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="HandlerDB.aspx.cs" Inherits="AccountLogInApplication.HandlerDB" %>
 
 <!DOCTYPE html>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AccountInformation.aspx.cs" Inherits="AccountLogInApplication.AccountInformation" %>
+﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="AccountInformation.aspx.cs" Inherits="AccountLogInApplication.AccountInformation" %>
 
 <!DOCTYPE html>
 
@@ -19,7 +19,7 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:label ID="Label1" runat="server">Fist name</asp:label>
+                        <span>Fist name</span>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:label ID="FistName" runat="server"></asp:label>
@@ -27,7 +27,7 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:label ID="Label2" runat="server">Last name</asp:label>
+                        <span>Last name</span>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:label ID="LastName" runat="server"></asp:label>
@@ -35,7 +35,7 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:label ID="Label3" runat="server">Years</asp:label>
+                        <span>Years</span>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:label ID="Age" runat="server"></asp:label>
@@ -43,7 +43,7 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:label ID="Label4" runat="server">Leaving place</asp:label>
+                        <span>Leaving place</span>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:label ID="LeavingPlace" runat="server"></asp:label>
@@ -51,7 +51,7 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:label ID="Label5" runat="server">Career</asp:label>
+                        <span>Career</span>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:label ID="Career" runat="server"></asp:label>

@@ -52,11 +52,11 @@ namespace AccountLogInApplication
             return false;
         }
 
-        public (bool, int) IsTrueData(string login, string password)
+        public bool IsTrueData(string login, string password)
         {
             if(login == string.Empty || password == string.Empty)
             {
-                return (false, 0);
+                return false;
             }
 
             using (UserContext db = new UserContext())
@@ -65,12 +65,12 @@ namespace AccountLogInApplication
                 {
                     if(user.Login == login && user.Password == password)
                     {
-                        return (true, user.ID);
+                        return true;
                     }
                 }
             }
 
-            return (false, 0);
+            return false;
         }
 
         public User GetInformationAboutUser(int id)

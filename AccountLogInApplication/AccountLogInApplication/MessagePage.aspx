@@ -1,11 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MessagePage.aspx.cs" Inherits="AccountLogInApplication.MessagePage" %>
+﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="MessagePage.aspx.cs" Inherits="AccountLogInApplication.MessagePage" %>
 
 <!DOCTYPE html>
-<%
-    
 
-
-    %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>

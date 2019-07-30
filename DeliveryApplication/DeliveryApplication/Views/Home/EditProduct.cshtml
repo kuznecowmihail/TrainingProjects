@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "EditProduct";
+}
+@model DeliveryApplication.Models.Product
+
+<h2>Edit Product №@Model.ID</h2>
+
+@using(Html.BeginForm("EditProduct", "Home", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.ID)
+        <p>
+            @Html.LabelFor(m => m.Name)
+            @Html.EditorFor(m => m.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Type)
+            @Html.EditorFor(m => m.Type)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Price)
+            @Html.EditorFor(m => m.Price)
+        </p>
+        <p><input type="submit" value="Send" /></p>
+    </fieldset>
+}
+
+

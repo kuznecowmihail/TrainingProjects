@@ -2,8 +2,10 @@
 @{
     ViewBag.Title = "Products";
 }
+@model List<DeliveryApplication.Models.Product>
 
 <h2>Products</h2>
+<h4><a href="/Home/Create">Create product</a></h4>
 
 <div>
     <table>
@@ -14,14 +16,16 @@
             <td><span>Price</span></td>
             <td></td>
         </tr>
-        @foreach (var product in ViewBag.Products)
+        @foreach (DeliveryApplication.Models.Product product in Model)
         {
             <tr>
-                <td>@product.ID</td>
-                <td>@product.Name</td>
-                <td>@product.Type</td>
-                <td>@product.Price</td>
+                <td><p>@product.ID</p></td>
+                <td><p>@product.Name</p></td>
+                <td><p>@product.Type</p></td>
+                <td><p>@product.Price</p></td>
                 <td><a href="/Home/Buy/@product.ID">Buy</a></td>
+                <td><a href="/Home/EditProduct/@product.ID">Edit</a></td>
+                <td><a href="/Home/DeleteProduct/@product.ID">Delete</a></td>
             </tr>
         }
     </table>

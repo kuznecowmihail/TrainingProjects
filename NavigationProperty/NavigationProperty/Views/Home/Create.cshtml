@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+@model NavigationProperty.Models.Player
+
+<h2>Create player</h2>
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(t => t.ID)
+        <p>
+            @Html.LabelFor(t => t.Name)
+            @Html.EditorFor(t => t.Name)
+        </p>
+        <p>
+            @Html.LabelFor(t => t.Age)
+            @Html.EditorFor(t => t.Age)
+        </p>
+        <p>
+            <label for="teamID">Team name</label>
+            <select name="teamID">
+                <option value=""></option>
+                @foreach (NavigationProperty.Models.Team team in ViewBag.TeamNames)
+                {
+                    <option value="@team.ID">@team.Name</option>
+                }
+            </select>
+        </p>
+        <p>
+            <input name="action" type="submit" value="Create" />
+            <input name="action" type="submit" value="Cancel" />
+        </p>
+    </fieldset>
+}
+

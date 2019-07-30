@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+@model NavigationProperty.Models.Player
+
+<h2>Edit player №@Model.ID</h2>
+
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(t => t.ID)
+        <p>
+            @Html.LabelFor(t => t.Name)
+            @Html.EditorFor(t => t.Name)
+        </p>
+        <p>
+            @Html.LabelFor(t => t.Age)
+            @Html.EditorFor(t => t.Age)
+        </p>
+        <p>
+            <select name="teamID">
+                @foreach (NavigationProperty.Models.Team team in ViewBag.TeamNames)
+                {
+                    if (Model.TeamID == team.ID)
+                    {
+                        <option selected="selected" value="@team.ID">@team.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@team.ID">@team.Name</option>
+                    }
+                }
+            </select>
+        </p>
+        <p>
+            <input name="action" type="submit" value="Edit" />
+            <input name="action" type="submit" value="Cancel" />
+        </p>
+    </fieldset>
+}
+

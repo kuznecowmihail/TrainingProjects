@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Buy product";
+}
+@model DeliveryApplication.Models.Delivery
+
+<h2>Buy product №@ViewBag.ID</h2>
+
+
+@using(Html.BeginForm("Buy", "Home", FormMethod.Post))
+{
+    <input type="hidden" value=@ViewBag.ID name="ProductID" />
+    <fieldset>
+        <p>
+            @Html.LabelFor(m => m.Name)
+                @Html.EditorFor(m => m.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Email)
+            @Html.EditorFor(m => m.Email)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Address)
+            @Html.EditorFor(m => m.Address)
+        </p>
+        <p>
+            <input type="submit" value="Send" />
+        </p>
+    </fieldset>
+}
+
+

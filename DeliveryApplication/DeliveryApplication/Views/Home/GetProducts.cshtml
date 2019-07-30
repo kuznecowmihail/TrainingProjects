@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Products";
+}
+@model List<DeliveryApplication.Models.Product>
+
+<h2>Products</h2>
+<h4><a href="/Home/Create">Create product</a></h4>
+
+<div>
+    <table>
+        <tr>
+            <td><span>ID</span></td>
+            <td><span>Name</span></td>
+            <td><span>Type</span></td>
+            <td><span>Price</span></td>
+            <td></td>
+        </tr>
+        @foreach (DeliveryApplication.Models.Product product in Model)
+        {
+            <tr>
+                <td><p>@product.ID</p></td>
+                <td><p>@product.Name</p></td>
+                <td><p>@product.Type</p></td>
+                <td><p>@product.Price</p></td>
+                <td><a href="/Home/Buy/@product.ID">Buy</a></td>
+                <td><a href="/Home/EditProduct/@product.ID">Edit</a></td>
+                <td><a href="/Home/DeleteProduct/@product.ID">Delete</a></td>
+            </tr>
+        }
+    </table>
+</div>
+

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Delete Product";
+}
+@model DeliveryApplication.Models.Product
+
+<h2>Do you delete product №@Model.ID?</h2>
+
+@using(Html.BeginForm("DeleteProduct", "Home", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.ID)
+
+    <fieldset>
+        <p>
+            @Html.LabelFor(m => m.Name)
+            @Html.DisplayFor(m => m.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Type)
+            @Html.DisplayFor(m => m.Type)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Price)
+            @Html.DisplayFor(m => m.Price)
+        </p>
+        <p>
+            <input name="action" type="submit" value="Delete" />
+            <input name="action" type="submit" value="Cancel" />
+        </p>
+    </fieldset>
+}
+

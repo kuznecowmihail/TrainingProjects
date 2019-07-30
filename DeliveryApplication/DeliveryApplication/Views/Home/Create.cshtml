@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+@model DeliveryApplication.Models.Product
+
+<h2>Create new product</h2>
+
+@using(Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <fieldset>
+        <p>
+            @Html.LabelFor(m => m.Name)
+            @Html.EditorFor(m => m.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Type)
+            @Html.EditorFor(m => m.Type)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Price)
+            @Html.EditorFor(m => m.Price)
+        </p>
+        <p>
+            <input type="submit" value="Send" />
+        </p>
+    </fieldset>
+}
+

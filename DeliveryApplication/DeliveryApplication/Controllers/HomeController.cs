@@ -108,6 +108,7 @@ namespace DeliveryApplication.Controllers
             return RedirectToAction("GetProducts");
         }
 
+        [HttpGet]
         public async Task<ActionResult> DeleteProduct(int? id)
         {
             if(id == null)
@@ -118,15 +119,27 @@ namespace DeliveryApplication.Controllers
             using (ShopContext db = new ShopContext())
             {
                 Product product = await db.Products.FindAsync(id);
-                
-                if(product != null)
+
+                if (product != null)
                 {
-                    await Task.Run(() => db.Products.Remove(product));
-                    await db.SaveChangesAsync();
+                    return View(product);
                 }
                 else
                 {
                     return HttpNotFound();
+                }
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteProduct(Product product, string action)
+        {
+            if (action == "Delete")
+            {
+                using (ShopContext db = new ShopContext())
+                {
+                    await Task.Run(() => db.Entry(product).State = EntityState.Deleted);
+                    await db.SaveChangesAsync();
                 }
             }
 

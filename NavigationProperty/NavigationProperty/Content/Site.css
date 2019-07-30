@@ -1,0 +1,24 @@
+﻿body {
+    font-size: 13px;
+    font-family: Verdana, Arial, Arial, Helvetica, sans-serif;
+    background-color: #f7f7fa;
+    padding-left: 40px;
+}
+
+nav {
+    display: block;
+    color: red;
+}
+
+table {
+    vertical-align: middle;
+    text-align: left;
+}
+
+.header {
+    font-weight: bold;
+}
+
+td {
+    padding-right: 10px;
+}

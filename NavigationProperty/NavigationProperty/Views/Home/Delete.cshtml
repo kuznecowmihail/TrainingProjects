@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+}
+@model NavigationProperty.Models.Player
+
+<h2>Delete</h2>
+
+
+<h2>Do you want delete player №@Model.ID</h2>
+
+@using (Html.BeginForm("Delete", "Home", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(t => t.ID)
+        <p>
+            @Html.LabelFor(t => t.Name)
+            @Html.DisplayFor(t => t.Name)
+        </p>
+        <p>
+            @Html.LabelFor(t => t.Age)
+            @Html.DisplayFor(t => t.Age)
+        </p>
+        <p>
+            @Html.LabelFor(t => t.Team.Name)
+            @Html.DisplayFor(t => t.Team.Name);
+        </p>
+        <p>
+            <input name="action" type="submit" value="Delete" />
+            <input name="action" type="submit" value="Cancel" />
+        </p>
+    </fieldset>
+}

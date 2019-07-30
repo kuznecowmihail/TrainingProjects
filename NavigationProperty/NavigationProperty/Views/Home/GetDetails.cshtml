@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "GetDetails";
+}
+@model NavigationProperty.Models.Team
+
+<h2>Details of @Model.Name team</h2>
+
+<div>
+    <table>
+        <tr>
+            <td><p>Name</p></td>
+            <td><p>Age</p></td>
+            <td></td>
+        </tr>
+        @foreach(NavigationProperty.Models.Player player in Model.Players)
+        {
+            <tr>
+                <td>@player.Name</td>
+                <td>@player.Age</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = player.ID })
+                    @Html.ActionLink("Delete", "Delete", new { id = player.ID })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
